@@ -1,5 +1,8 @@
 package Classes;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 import Classes.Abstract.Orang;
 
 public class Konsumen extends Orang {
@@ -10,6 +13,8 @@ public class Konsumen extends Orang {
         super(nama, id, password);
         this.saldoMember = saldoMember;
         this.isMember = isMember;
+
+        addToPembeliFile(this);
     }
 
     public double getSaldoMember() {
@@ -26,5 +31,27 @@ public class Konsumen extends Orang {
 
     public void setMember(boolean member) {
         isMember = member;
+    }
+
+    public void topUpSaldo(double saldo) {
+        this.saldoMember += saldo;
+    }
+
+    public void beliBarang(double harga) {
+        this.saldoMember -= harga;
+    }
+
+    public void addToPembeliFile(Konsumen konsumen) {
+        //menambahkan konsumen ke dalam file pembeli.txt
+        String namaFile = "pembeli.txt";
+        FileWriter fileWriter;
+
+        try {
+            fileWriter = new FileWriter(namaFile, true);
+            fileWriter.write(konsumen.getNama() + " " + konsumen.getId() + " " + konsumen.getPassword() + " " + konsumen.getSaldoMember() + " " + konsumen.isMember() + "\n");
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

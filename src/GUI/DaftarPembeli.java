@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import javax.swing.JOptionPane;
+
+import Classes.Konsumen;
+
 /**
  *
  * @author MT
@@ -26,6 +30,7 @@ public class DaftarPembeli extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -34,6 +39,17 @@ public class DaftarPembeli extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 406, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 151, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +67,11 @@ public class DaftarPembeli extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Daftar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Kembali");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -111,8 +132,21 @@ public class DaftarPembeli extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        //masukkan data pembeli ke dalam file
+        String nama = jTextField1.getText();
+        String password = jTextField2.getText();
+        //tambahkan data pembeli ke dalam file
+        Konsumen pembeli = new Konsumen(nama, "", password, 0, true);
+        
+        //if not error, munculkan dialog "pendaftaran bergasil"
+        JOptionPane.showMessageDialog(this, "Pendaftaran berhasil");
+    }
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        new LoginPembeli().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -153,6 +187,7 @@ public class DaftarPembeli extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
