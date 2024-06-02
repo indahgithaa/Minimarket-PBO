@@ -1,5 +1,2 @@
-aespa,AE0001,aespa,100000.0,true
-janice,JA0001,janice,100000.0,true
-janice,JA0001,janice,100000.0,true
-takoyaki,TA0001,koyaki,100000.0,true
-hanni,HA0001,hani,100000.0,true
+Olivia,OL0001,olivialauna,100000.0,true
+Launa,LA0001,olivia,100000.0,true

@@ -15,9 +15,10 @@ import Classes.Abstract.Product;
  * @author MT
  */
 public class KonfirmasiPesanan extends javax.swing.JFrame {
-
+    final double[] totalBelanja = {0};
+    final double biayaOngkir = 7000;
+    final double biayaLayanan = 3000;
     protected static Konsumen konsumen = null;
-
     protected static Map<Product, Integer> keranjangGuest = new HashMap<>();
 
     /**
@@ -112,7 +113,13 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
 
         jLabel5.setText("Total Belanja: " + totalBelanja());
 
-        jLabel6.setText("Biaya Ongkir:");
+        if (jCheckBox1.isSelected()) {
+            jLabel6.setText("Biaya Ongkir: Rp" + 7000);
+            jCheckBox2.setSelected(false);
+        } else {
+            jLabel6.setText("Biaya Ongkir: Rp" + 0);
+            jCheckBox1.setSelected(false);
+        }
 
         jLabel7.setText("Biaya Layanan: Rp3000");
 
@@ -203,11 +210,23 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
+        if (jCheckBox1.isSelected()) {
+            jLabel6.setText("Biaya Ongkir: Rp" + 7000);
+            jCheckBox2.setSelected(false);
+        } else {
+            jLabel6.setText("Biaya Ongkir: Rp" + 0);
+            jCheckBox1.setSelected(false);
+        }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
+        if (jCheckBox2.isSelected()) {
+            jLabel6.setText("Biaya Ongkir: Rp" + 0);
+            jCheckBox1.setSelected(false);
+        } else {
+            jLabel6.setText("Biaya Ongkir: Rp" + 7000);
+            jCheckBox2.setSelected(false);
+        }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -215,18 +234,19 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private double totalBelanja() {
-        final double[] total = {0};
         if (konsumen != null) {
             // Hitung harga produk hashmap dikali qty
             konsumen.getBarangDibeli().forEach((k, v) -> {
-                total[0] += k.getPrice() * v;
+                totalBelanja[0] += k.getPrice() * v;
+                System.out.println(k.getName() + " " + v);
             });
         } else {
             keranjangGuest.forEach((k, v) -> {
-                total[0] += k.getPrice() * v;
+                totalBelanja[0] += k.getPrice() * v;
+                System.out.println(k.getName() + " " + v);
             });
         }
-        return total[0]; 
+        return totalBelanja[0]; 
         }
     
     /**

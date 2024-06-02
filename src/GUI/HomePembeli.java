@@ -600,11 +600,11 @@ public class HomePembeli extends javax.swing.JFrame {
         int mizoneIsotonicQty = (int) jSpinner8.getValue();
         int tehKotakOriQty = (int) jSpinner9.getValue();
 
-        int joykoTipexQty = (int) jSpinner2.getValue();
-        int looseLeafQty = (int) jSpinner10.getValue();
-        int fCastellPencilQty = (int) jSpinner11.getValue();
+        int joykoTipexQty = (int) jSpinner13.getValue();
+        int looseLeafQty = (int) jSpinner11.getValue();
+        int fCastellPencilQty = (int) jSpinner10.getValue();
         int stdrPenghapusQty = (int) jSpinner12.getValue();
-        int pulpenJykoQty = (int) jSpinner13.getValue();
+        int pulpenJykoQty = (int) jSpinner2.getValue();
 
         if (konsumen != null) {
             konsumen.addToBarangDibeli(aquaBotol, aquaBotolQty);
