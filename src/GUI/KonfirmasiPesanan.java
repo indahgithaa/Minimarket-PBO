@@ -7,6 +7,13 @@ package GUI;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.Box;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import java.awt.*;
+
 import Classes.Konsumen;
 import Classes.Abstract.Product;
 
@@ -28,6 +35,61 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
         this.konsumen = konsumen;
         this.keranjangGuest = keranjangGuest;
         initComponents(konsumen);
+        generateBills();
+    }
+
+    private void generateBills() {
+        jPanel1.removeAll(); // Clear previous bills Set layout for bills
+        jPanel1.setLayout(new GridLayout(0, 3));
+        jPanel1.setBorder(new EmptyBorder(0, 10, 0, 0));
+        JLabel labelBarang = new JLabel("<html><b>Nama Barang</b></html>");
+       // labelBarang.setHorizontalAlignment(SwingConstants.CENTER);
+        JLabel qtyBarang = new JLabel("<html><b>Qty</b></html>");
+        qtyBarang.setHorizontalAlignment(SwingConstants.CENTER);
+        JLabel hargaTotal = new JLabel("<html><b>Harga Total</b></html>");
+        hargaTotal.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        jPanel1.add(labelBarang);
+        jPanel1.add(qtyBarang);
+        jPanel1.add(hargaTotal);
+        
+        jPanel1.add(Box.createVerticalStrut(10));
+        jPanel1.add(Box.createVerticalStrut(10));
+        jPanel1.add(Box.createVerticalStrut(10));
+
+        if (konsumen != null) {
+            //jangan muncul kalau qty/value 0
+            for (Map.Entry<Product, Integer> entry : konsumen.getBarangDibeli().entrySet()) {
+                if (entry.getValue() != 0) {
+                    JLabel namaBrg = new JLabel(entry.getKey().getName());
+                    jPanel1.add(namaBrg);
+                    JLabel qtyBrg = new JLabel(String.valueOf(entry.getValue()));
+                    jPanel1.add(qtyBrg);
+                    JLabel hargaBrg = new JLabel(String.valueOf(entry.getKey().getPrice() * entry.getValue()));
+                    jPanel1.add(hargaBrg);
+
+                    qtyBrg.setHorizontalAlignment(SwingConstants.CENTER);
+                    hargaBrg.setHorizontalAlignment(SwingConstants.CENTER);
+                }
+            }
+        } else {
+            for (Map.Entry<Product, Integer> entry : keranjangGuest.entrySet()) {
+                if (entry.getValue() != 0) {
+                    JLabel namaBrg = new JLabel(entry.getKey().getName());
+                    jPanel1.add(namaBrg);
+                    JLabel qtyBrg = new JLabel(String.valueOf(entry.getValue()));
+                    jPanel1.add(qtyBrg);
+                    JLabel hargaBrg = new JLabel(String.valueOf(entry.getKey().getPrice() * entry.getValue()));
+                    jPanel1.add(hargaBrg);
+
+                    qtyBrg.setHorizontalAlignment(SwingConstants.CENTER);
+                    hargaBrg.setHorizontalAlignment(SwingConstants.CENTER);
+                }
+            }
+        }
+
+        jPanel1.revalidate(); // Refresh panel to reflect changes
+        jPanel1.repaint();
     }
 
     /**
@@ -61,6 +123,9 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
         jLabel1.setText("Konfirmasi Pesanan");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new Dimension(298, 262)); // Set fixed size
+        jPanel1.setMinimumSize(new Dimension(298, 262)); // Set fixed size
+        jPanel1.setMaximumSize(new Dimension(298, 262)); // Set fixed size
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -70,7 +135,7 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 262, Short.MAX_VALUE)
+            .addGap(0, 263, Short.MAX_VALUE)
         );
 
         jCheckBox1.setText("Delivery (Ongkir: Rp7000)");
@@ -99,27 +164,13 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
         jLabel2.setText("Metode Pengambilan/Pengantaran");
 
-        if (konsumen != null) {
-            jLabel3.setText("Nama: " + konsumen.getNama());
-        } else {
-            jLabel3.setText("Nama: Guest");
-        }
+        jLabel3.setText("Nama: User");
 
-        if (konsumen != null) {
-            jLabel4.setText("Saldo: " + konsumen.getSaldoMember());
-        } else {
-            jLabel4.setText("Saldo: -");
-        }
+        jLabel4.setText("Saldo: -");
 
-        jLabel5.setText("Total Belanja: " + totalBelanja());
+        jLabel5.setText("Total Belanja:");
 
-        if (jCheckBox1.isSelected()) {
-            jLabel6.setText("Biaya Ongkir: Rp" + 7000);
-            jCheckBox2.setSelected(false);
-        } else {
-            jLabel6.setText("Biaya Ongkir: Rp" + 0);
-            jCheckBox1.setSelected(false);
-        }
+        jLabel6.setText("Biaya Ongkir:");
 
         jLabel7.setText("Biaya Layanan: Rp3000");
 
@@ -155,14 +206,12 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
                     .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,6 +281,9 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    //make formatted bills in jPanel1
+
 
     private double totalBelanja() {
         if (konsumen != null) {
