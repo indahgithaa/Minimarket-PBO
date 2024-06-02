@@ -13,7 +13,7 @@ public abstract class Orang {
         this.id = id;
         this.password = password;
 
-        if(id.equals("")) {
+        if (this.id == null || this.id.equals("")) {
             generateId();
         }
     }

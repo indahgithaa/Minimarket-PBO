@@ -1,4 +1,1 @@
-Kesya KE0006 kikirara 0.0 true
-kirana KI0001 keira 0.0 true
-kirana KI0002 keira 0.0 true
-kieeeei KI0003 keira 0.0 true
+aespa,AE0001,aespa,100000.0,true

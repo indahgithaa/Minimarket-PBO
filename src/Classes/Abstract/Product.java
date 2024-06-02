@@ -2,7 +2,7 @@ package Classes.Abstract;
 
 import java.util.Date;
 
-public class Product {
+public abstract class Product {
     protected String name;
     protected double price;
     protected Date expiryDate;
@@ -10,7 +10,7 @@ public class Product {
     protected int stock;
     protected double actualPrice;
 
-    public Product(String name, double price, Date expiryDate, String idBarang) {
+    public Product(String name, double price, Date expiryDate, String idBarang, int stock) {
         this.name = name;
         this.price = price;
         this.expiryDate = expiryDate;

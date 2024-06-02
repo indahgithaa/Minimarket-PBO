@@ -8,8 +8,8 @@ import Classes.Enum.Jenis;
 public class Makanan extends Product {
     protected Jenis jenis;
 
-    public Makanan(String name, double price, Date expiryDate, String idBarang, Jenis jenis) {
-        super(name, price, expiryDate, idBarang);
+    public Makanan(String name, double price, Date expiryDate, String idBarang, Jenis jenis, int stock) {
+        super(name, price, expiryDate, idBarang, stock);
         this.jenis = jenis;
     }
 

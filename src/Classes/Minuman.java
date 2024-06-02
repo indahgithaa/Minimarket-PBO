@@ -8,10 +8,9 @@ import Classes.Enum.Size;
 public class Minuman extends Product {
     protected Size size;
 
-    public Minuman(String name, double price, Date expiryDate, String idBarang, Size size) {
-        super(name, price, expiryDate, idBarang);
-        this.size = size;
-    }
+    public Minuman(String name, double price, Date expiryDate, String idBarang, int stock) {
+        super(name, price, expiryDate, idBarang, stock);
+    }    
 
     public void setSize(Size size) {
         this.size = size;
