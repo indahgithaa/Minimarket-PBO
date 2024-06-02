@@ -5,6 +5,9 @@
 package GUI;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import Classes.ATK;
 import Classes.Konsumen;
@@ -18,6 +21,22 @@ import Classes.Abstract.Product;
  */
 public class HomePembeli extends javax.swing.JFrame {
     protected static Konsumen konsumen = null;
+
+    Map<Product, Integer> barangDibeliGuest = new HashMap<>();
+
+    Date date = new Date(2025, 12, 31);
+        
+    Minuman aquaBotol = new Minuman("AQUA 600ml", 4000, date, "AQ001", 10);
+    Minuman buavitaJmb = new Minuman("Buavita JMB 245", 8000, date, "BV001", 10);
+    Minuman cimoryOriginal = new Minuman("Cimory Original", 8000, date, "CM001", 10);
+    Minuman mizoneIsotonic = new Minuman("Mizone Isotonic", 5000, date, "MZ001", 10);
+    Minuman tehKotakOri = new Minuman("Teh Kotak Ori", 5000, date, "TK001", 10);
+
+    ATK pulpenJyko = new ATK("Pulpen JYKO", 4000, date, "PJ001", 10);
+    ATK looseLeaf = new ATK("Loose Leaf - B5", 10000, date, "LL001", 10);
+    ATK fCastellPencil = new ATK("F.Castell Pencil", 4000, date, "FC001", 10);
+    ATK stdrPenghapus = new ATK("STDR Penghapus", 2000, date, "SP001", 10);
+    ATK joykoTipex = new ATK("JOYKO Tipe-x", 5000, date, "JT001", 10);
     /**
      * Creates new form HomePembeli
      */
@@ -34,7 +53,6 @@ public class HomePembeli extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents(Konsumen konsumen) {
-
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -162,7 +180,7 @@ public class HomePembeli extends javax.swing.JFrame {
         jButton1.setText("Selesai");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSelesaiActionPerformed(evt);
             }
         });
 
@@ -175,6 +193,8 @@ public class HomePembeli extends javax.swing.JFrame {
         jLabel37.setText("Stok: 10");
 
         jLabel38.setText("Stok: 10");
+
+
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -326,7 +346,7 @@ public class HomePembeli extends javax.swing.JFrame {
         jButton2.setText("Selesai");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonSelesaiActionPerformed(evt);
             }
         });
 
@@ -573,33 +593,53 @@ public class HomePembeli extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonSelesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int aquaBotolQty = (int) jSpinner1.getValue();
+        int buavitaJmbQty = (int) jSpinner7.getValue();
+        int cimoryOriginalQty = (int) jSpinner6.getValue();
+        int mizoneIsotonicQty = (int) jSpinner8.getValue();
+        int tehKotakOriQty = (int) jSpinner9.getValue();
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        int joykoTipexQty = (int) jSpinner2.getValue();
+        int looseLeafQty = (int) jSpinner10.getValue();
+        int fCastellPencilQty = (int) jSpinner11.getValue();
+        int stdrPenghapusQty = (int) jSpinner12.getValue();
+        int pulpenJykoQty = (int) jSpinner13.getValue();
+
+        if (konsumen != null) {
+            konsumen.addToBarangDibeli(aquaBotol, aquaBotolQty);
+            konsumen.addToBarangDibeli(cimoryOriginal, cimoryOriginalQty);
+            konsumen.addToBarangDibeli(buavitaJmb, buavitaJmbQty);
+            konsumen.addToBarangDibeli(mizoneIsotonic, mizoneIsotonicQty);
+            konsumen.addToBarangDibeli(tehKotakOri, tehKotakOriQty);
+
+            konsumen.addToBarangDibeli(pulpenJyko, pulpenJykoQty);
+            konsumen.addToBarangDibeli(looseLeaf, looseLeafQty);
+            konsumen.addToBarangDibeli(fCastellPencil, fCastellPencilQty);
+            konsumen.addToBarangDibeli(stdrPenghapus, stdrPenghapusQty);
+            konsumen.addToBarangDibeli(joykoTipex, joykoTipexQty);
+        } else {
+            barangDibeliGuest.put(aquaBotol, aquaBotolQty);
+            barangDibeliGuest.put(cimoryOriginal, cimoryOriginalQty);
+            barangDibeliGuest.put(buavitaJmb, buavitaJmbQty);
+            barangDibeliGuest.put(mizoneIsotonic, mizoneIsotonicQty);
+            barangDibeliGuest.put(tehKotakOri, tehKotakOriQty);
+
+            barangDibeliGuest.put(pulpenJyko, pulpenJykoQty);
+            barangDibeliGuest.put(looseLeaf, looseLeafQty);
+            barangDibeliGuest.put(fCastellPencil, fCastellPencilQty);
+            barangDibeliGuest.put(stdrPenghapus, stdrPenghapusQty);
+            barangDibeliGuest.put(joykoTipex, joykoTipexQty);
+        }
+
+        //pindah ke konfirmasi
+        new KonfirmasiPesanan(konsumen, barangDibeliGuest).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        Date date = new Date(2025, 12, 31);
-        
-        Minuman aquaBotol = new Minuman("AQUA 600ml", 4000, date, "AQ001", 10);
-        Minuman buavitaJmb = new Minuman("Buavita JMB 245", 8000, date, "BV001", 10);
-        Minuman cimoryOriginal = new Minuman("Cimory Original", 8000, date, "CM001", 10);
-        Minuman mizoneIsotonic = new Minuman("Mizone Isotonic", 5000, date, "MZ001", 10);
-        Minuman tehKotakOri = new Minuman("Teh Kotak Ori", 5000, date, "TK001", 10);
-
-        ATK pulpenJyko = new ATK("Pulpen JYKO", 4000, date, "PJ001", 10);
-        ATK looseLeaf = new ATK("Loose Leaf - B5", 10000, date, "LL001", 10);
-        ATK fCastellPencil = new ATK("F.Castell Pencil", 4000, date, "FC001", 10);
-        ATK stdrPenghapus = new ATK("STDR Penghapus", 2000, date, "SP001", 10);
-        ATK joykoTipex = new ATK("JOYKO Tipe-x", 5000, date, "JT001", 10);
-
-
-
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

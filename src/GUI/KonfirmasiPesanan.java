@@ -4,17 +4,29 @@
  */
 package GUI;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import Classes.Konsumen;
+import Classes.Abstract.Product;
+
 /**
  *
  * @author MT
  */
 public class KonfirmasiPesanan extends javax.swing.JFrame {
 
+    protected static Konsumen konsumen = null;
+
+    protected static Map<Product, Integer> keranjangGuest = new HashMap<>();
+
     /**
      * Creates new form KonfirmasiPesanan
      */
-    public KonfirmasiPesanan() {
-        initComponents();
+    public KonfirmasiPesanan(Konsumen konsumen, Map<Product, Integer> keranjangGuest) {
+        this.konsumen = konsumen;
+        this.keranjangGuest = keranjangGuest;
+        initComponents(konsumen);
     }
 
     /**
@@ -24,7 +36,7 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents(Konsumen konsumen) {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -86,11 +98,19 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
         jLabel2.setText("Metode Pengambilan/Pengantaran");
 
-        jLabel3.setText("Nama: User");
+        if (konsumen != null) {
+            jLabel3.setText("Nama: " + konsumen.getNama());
+        } else {
+            jLabel3.setText("Nama: Guest");
+        }
 
-        jLabel4.setText("Saldo: -");
+        if (konsumen != null) {
+            jLabel4.setText("Saldo: " + konsumen.getSaldoMember());
+        } else {
+            jLabel4.setText("Saldo: -");
+        }
 
-        jLabel5.setText("Total Belanja:");
+        jLabel5.setText("Total Belanja: " + totalBelanja());
 
         jLabel6.setText("Biaya Ongkir:");
 
@@ -194,6 +214,21 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private double totalBelanja() {
+        final double[] total = {0};
+        if (konsumen != null) {
+            // Hitung harga produk hashmap dikali qty
+            konsumen.getBarangDibeli().forEach((k, v) -> {
+                total[0] += k.getPrice() * v;
+            });
+        } else {
+            keranjangGuest.forEach((k, v) -> {
+                total[0] += k.getPrice() * v;
+            });
+        }
+        return total[0]; 
+        }
+    
     /**
      * @param args the command line arguments
      */
@@ -224,7 +259,7 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KonfirmasiPesanan().setVisible(true);
+                new KonfirmasiPesanan(konsumen, keranjangGuest).setVisible(true);
             }
         });
     }

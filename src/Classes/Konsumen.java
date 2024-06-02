@@ -3,6 +3,8 @@ package Classes;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import Classes.Abstract.Orang;
 import Classes.Abstract.Product;
@@ -10,7 +12,7 @@ import Classes.Abstract.Product;
 public class Konsumen extends Orang {
     private double saldoMember;
     private boolean isMember;
-    private ArrayList<Product> barangDibeli = new ArrayList<>();
+    private Map<Product, Integer> barangDibeli = new HashMap<>();
     public static ArrayList<Konsumen> listKonsumen = new ArrayList<>();
 
     public Konsumen(String nama, String id, String password, double saldoMember, boolean isMember) {
@@ -59,7 +61,16 @@ public class Konsumen extends Orang {
         }
     }
 
-    public void addToBarangDibeli(Product product) {
-        barangDibeli.add(product);
+    public void addToBarangDibeli(Product product, int qty) {
+        if (barangDibeli.containsKey(product)) {
+            int currentQty = barangDibeli.get(product);
+            barangDibeli.put(product, currentQty + qty);
+        } else {
+            barangDibeli.put(product, qty);
+        }
+    }
+
+    public Map<Product, Integer> getBarangDibeli() {
+        return barangDibeli;
     }
 }
