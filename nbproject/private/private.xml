@@ -5,10 +5,16 @@
         <group>
             <file>file:/C:/College/Pemrograman%20Berorientasi%20Object/Minimarket-PBO/src/GUI/LoginPembeli.java</file>
             <file>file:/C:/College/Pemrograman%20Berorientasi%20Object/Minimarket-PBO/src/GUI/HomePembeli.java</file>
-            <file>file:/C:/College/Pemrograman%20Berorientasi%20Object/Minimarket-PBO/src/GUI/LoginKaryawan.java</file>
-            <file>file:/C:/College/Pemrograman%20Berorientasi%20Object/Minimarket-PBO/src/GUI/PendaftaranBerhasilDialog.java</file>
+            <file>file:/C:/College/Pemrograman%20Berorientasi%20Object/Minimarket-PBO/src/GUI/WelcomeManager.java</file>
+            <file>file:/C:/College/Pemrograman%20Berorientasi%20Object/Minimarket-PBO/src/GUI/KelolaBarang.java</file>
+            <file>file:/C:/College/Pemrograman%20Berorientasi%20Object/Minimarket-PBO/src/GUI/DaftarKaryawan.java</file>
+            <file>file:/C:/College/Pemrograman%20Berorientasi%20Object/Minimarket-PBO/src/GUI/KonfirmasiPesanan.java</file>
+            <file>file:/C:/College/Pemrograman%20Berorientasi%20Object/Minimarket-PBO/src/GUI/DaftarkanPegawai.java</file>
+            <file>file:/C:/College/Pemrograman%20Berorientasi%20Object/Minimarket-PBO/src/GUI/DaftarRiwayatPembelian.java</file>
+            <file>file:/C:/College/Pemrograman%20Berorientasi%20Object/Minimarket-PBO/src/GUI/WelcomeAdmin.java</file>
             <file>file:/C:/College/Pemrograman%20Berorientasi%20Object/Minimarket-PBO/src/GUI/Onboarding.java</file>
             <file>file:/C:/College/Pemrograman%20Berorientasi%20Object/Minimarket-PBO/src/GUI/DaftarPembeli.java</file>
+            <file>file:/C:/College/Pemrograman%20Berorientasi%20Object/Minimarket-PBO/src/GUI/LoginAdmin.java</file>
         </group>
     </open-files>
 </project-private>
