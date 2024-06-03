@@ -11,6 +11,6 @@ public class DeliveryMan extends Karyawan{
     
     @Override
     public String toString() {
-        return this.nama + "," + this.id + "," + this.posisi + "," + this.gaji;
+        return this.nama + "," + this.id + "," + this.posisi + "," + this.gaji + "," + this.password;
     }
 }

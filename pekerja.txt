@@ -1,1 +1,2 @@
-jennie,JE0003,Admin,9000000.0
+Karina,KA0001,Kasir,2000000.0,karinaaespa
+Jennie,JE0002,Admin,2000000.0,jenniebp
