@@ -40,7 +40,7 @@ public class Onboarding extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 36)); // NOI18N
         jLabel2.setText("SEVEN ELEVEN");
 
-        jButton2.setText("Masuk sebagai Karyawan");
+        jButton2.setText("Masuk sebagai Admin");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
