@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.swing.Box;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
@@ -93,6 +94,15 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
         jPanel1.repaint();
     }
 
+    private void updateTotalKeseluruhan() {
+        if (jCheckBox1.isSelected()) {
+            totalKeseluruhan = totalBelanja() + biayaOngkir + biayaLayanan;
+        } else {
+            totalKeseluruhan = totalBelanja() + biayaLayanan;
+        }
+        jLabel8.setText("Rp" + totalKeseluruhan);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -158,7 +168,14 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(51, 153, 255));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Saldo Member");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
         jLabel2.setText("Metode Pengambilan/Pengantaran");
@@ -175,13 +192,14 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
 
         if (jCheckBox1.isSelected()) {
             totalKeseluruhan = totalBelanja() + biayaOngkir + biayaLayanan;
+            jLabel8.setText("Rp"+totalKeseluruhan);
         } else {
             totalKeseluruhan = totalBelanja() + biayaLayanan;
+            jLabel8.setText("Rp"+totalKeseluruhan);
         }
-        
+
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel8.setText("Rp" + totalKeseluruhan);
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
         jLabel10.setText("Bayar Dengan:");
@@ -283,6 +301,8 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
             jLabel6.setText("Biaya Ongkir: Rp" + 0);
             jCheckBox1.setSelected(false);
         }
+
+        updateTotalKeseluruhan();
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
@@ -293,14 +313,28 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
             jLabel6.setText("Biaya Ongkir: Rp" + 7000);
             jCheckBox2.setSelected(false);
         }
+
+        updateTotalKeseluruhan();
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        //show dialog message
+        JOptionPane.showMessageDialog(this, "Pembayaran dengan tunai berhasil! \nTerima kasih telah berbelanja di Seven Eleven!");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    //make formatted bills in jPanel1
-
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //show dialog message
+        if (konsumen != null) {
+            if (totalKeseluruhan <= konsumen.getSaldoMember()) {
+                konsumen.setSaldoMember(konsumen.getSaldoMember() - totalKeseluruhan);
+                JOptionPane.showMessageDialog(this, "Pembayaran dengan saldo member berhasil! \nTerima kasih telah berbelanja di Seven Eleven!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Saldo member tidak mencukupi");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Tidak dapat melakukan pembayaran dengan saldo member");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private double totalBelanja() {
         totalBelanja[0] = 0;
