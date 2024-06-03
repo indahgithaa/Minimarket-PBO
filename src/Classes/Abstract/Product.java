@@ -16,6 +16,7 @@ public abstract class Product {
         this.expiryDate = expiryDate;
         this.idBarang = idBarang;
         this.actualPrice = price;
+        this.stock = stock;
     }
 
     public String getName() {

@@ -14,6 +14,12 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import java.time.LocalDate;
 
 import Classes.Konsumen;
 import Classes.Abstract.Product;
@@ -29,6 +35,7 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
     protected static Konsumen konsumen = null;
     protected static Map<Product, Integer> keranjangGuest = new HashMap<>();
     public double totalKeseluruhan = 0;
+    public static int idCounter = 0;
 
     /**
      * Creates new form KonfirmasiPesanan
@@ -101,6 +108,40 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
             totalKeseluruhan = totalBelanja() + biayaLayanan;
         }
         jLabel8.setText("Rp" + totalKeseluruhan);
+    }
+
+    private void writeToFile() {
+        String namaFile = "riwayatPelanggan.txt";
+        FileWriter fileWriter;
+        LocalDate today = LocalDate.now();
+
+        try {
+            fileWriter = new FileWriter(namaFile, true);
+            if (konsumen != null) {
+                fileWriter.write(generateId() + "," + today + "," + konsumen.getNama() + "," + totalKeseluruhan + "\n");
+            } else {
+                fileWriter.write(generateId() + "," + today + "," + "Guest" + "," + totalKeseluruhan + "\n");
+            }
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+   public String generateId() {
+        String id = "";
+        String file1 = "riwayatPelanggan.txt";
+        String duaHurufPertama = konsumen != null ? konsumen.getNama().substring(0, 2).toUpperCase() : "GU";
+
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file1))) {
+            long count = bufferedReader.lines().count();
+            idCounter = (int) count + 1;
+            id = duaHurufPertama + String.format("%04d", idCounter);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return id;
     }
 
     /**
@@ -319,11 +360,13 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //show dialog message
+        writeToFile();
         JOptionPane.showMessageDialog(this, "Pembayaran dengan tunai berhasil! \nTerima kasih telah berbelanja di Seven Eleven!");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //show dialog message
+        writeToFile();
         if (konsumen != null) {
             if (totalKeseluruhan <= konsumen.getSaldoMember()) {
                 konsumen.setSaldoMember(konsumen.getSaldoMember() - totalKeseluruhan);

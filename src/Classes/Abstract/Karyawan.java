@@ -1,17 +1,22 @@
 package Classes.Abstract;
 
-public abstract class Karyawan extends Orang {
-    private String posisi;
-    private int lamaKerja;
-    private double gaji;
-    private double totalGajiSesuaiLamaKerja;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
-    public Karyawan(String nama, String id, String password, String idPekerja, String posisi, int lamaKerja, double gaji) {
+public abstract class Karyawan extends Orang {
+    protected String posisi;
+    protected double gaji;
+    static int idCounter = 0;
+
+    public Karyawan(String nama, String id, String password, String posisi, double gaji) {
         super(nama, id, password);
         this.posisi = posisi;
-        this.lamaKerja = lamaKerja;
         this.gaji = gaji;
-        this.totalGajiSesuaiLamaKerja = gaji * lamaKerja;
+
+        if (this.id == null || this.id.equals("")) {
+            generateId();
+        }
     }
 
     public String getPosisi() {
@@ -22,14 +27,6 @@ public abstract class Karyawan extends Orang {
         this.posisi = posisi;
     }
 
-    public int getLamaKerja() {
-        return lamaKerja;
-    }
-
-    public void setLamaKerja(int lamaKerja) {
-        this.lamaKerja = lamaKerja;
-    }
-
     public double getGaji() {
         return gaji;
     }
@@ -38,15 +35,18 @@ public abstract class Karyawan extends Orang {
         this.gaji = gaji;
     }
 
-    public double getTotalGajiSesuaiLamaKerja() {
-        return totalGajiSesuaiLamaKerja;
-    }
+    public void generateId() {
+        String id = "";
+        String file1 = "pekerja.txt";
+        String duaHurufPertama = nama.substring(0, 2).toUpperCase();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file1))) {
+            long count = bufferedReader.lines().count();
+            idCounter = (int) count + 1;
+            id = duaHurufPertama + String.format("%04d", idCounter);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-    public void setTotalGajiSesuaiLamaKerja(double totalGajiSesuaiLamaKerja) {
-        this.totalGajiSesuaiLamaKerja = totalGajiSesuaiLamaKerja;
-    }
-
-    public void hitungTotalGajiSesuaiLamaKerja() {
-        this.totalGajiSesuaiLamaKerja = this.gaji * this.lamaKerja * 12;
+        this.id = id;
     }
 }

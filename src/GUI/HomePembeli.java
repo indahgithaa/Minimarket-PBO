@@ -152,29 +152,20 @@ public class HomePembeli extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mizone.jpeg"))); // NOI18N
         jLabel7.setText("jLabel3");
 
-        jLabel8.setText("AQUA 600ml");
-
-        jLabel9.setText("Buavita JMB 245");
-
-        jLabel10.setText("Cimory Original");
-
-        jLabel11.setText("Mizone Isotonic");
-
-        jLabel12.setText("Teh Kotak Ori");
+        jLabel8.setText(aquaBotol.getName());
+        jLabel9.setText(buavitaJmb.getName());
+        jLabel10.setText(cimoryOriginal.getName());
+        jLabel11.setText(mizoneIsotonic.getName());
+        jLabel12.setText(tehKotakOri.getName());
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("Rp4000");
-
+        jLabel13.setText("Rp" + (int) aquaBotol.getPrice());
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Rp8000");
-
+        jLabel14.setText("Rp" + (int) buavitaJmb.getPrice());
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Rp8000");
-
-        jLabel16.setText("Rp5000");
-
-        jLabel17.setText("Rp5000");
-
+        jLabel15.setText("Rp" + (int) cimoryOriginal.getPrice());
+        jLabel16.setText("Rp" + (int) mizoneIsotonic.getPrice());
+        jLabel17.setText("Rp" + (int) tehKotakOri.getPrice());
         jButton1.setBackground(new java.awt.Color(0, 102, 255));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Selesai");
@@ -184,17 +175,11 @@ public class HomePembeli extends javax.swing.JFrame {
             }
         });
 
-        jLabel34.setText("Stok: 10");
-
-        jLabel35.setText("Stok: 10");
-
-        jLabel36.setText("Stok: 10");
-
-        jLabel37.setText("Stok: 10");
-
-        jLabel38.setText("Stok: 10");
-
-
+        jLabel34.setText("Stok: " + aquaBotol.getStock());
+        jLabel35.setText("Stok: " + buavitaJmb.getStock());
+        jLabel36.setText("Stok: " + cimoryOriginal.getStock());
+        jLabel37.setText("Stok: " + mizoneIsotonic.getStock());
+        jLabel38.setText("Stok: " + tehKotakOri.getStock());
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -310,36 +295,26 @@ public class HomePembeli extends javax.swing.JFrame {
         jTabbedPane1.addTab("Minuman", jPanel2);
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("Rp4000");
-
+        jLabel18.setText("Rp" + (int) pulpenJyko.getPrice());
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tipex.jpeg"))); // NOI18N
         jLabel19.setText("jLabel3");
-
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setText("Rp10000");
-
+        jLabel20.setText("Rp" + (int) looseLeaf.getPrice());
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/joyko.jpeg"))); // NOI18N
-
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setText("Rp4000");
-
+        jLabel22.setText("Rp" + (int) fCastellPencil.getPrice());
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/looseleaf.jpeg"))); // NOI18N
         jLabel23.setText("jLabel3");
-
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("Rp2000");
-
+        jLabel24.setText("Rp" + (int) stdrPenghapus.getPrice());
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pensil.png"))); // NOI18N
         jLabel25.setText("jLabel3");
-
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setText("Rp5000");
+        jLabel26.setText("Rp" + (int) joykoTipex.getPrice());
 
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/penghapus.jpeg"))); // NOI18N
         jLabel27.setText("jLabel3");
-
-        jLabel28.setText("Pulpen JYKO");
 
         jButton2.setBackground(new java.awt.Color(0, 102, 255));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -350,29 +325,23 @@ public class HomePembeli extends javax.swing.JFrame {
             }
         });
 
-        jLabel29.setText("Loose Leaf - B5");
-
-        jLabel30.setText("F.Castell Pencil");
-
-        jLabel31.setText("STDR Penghapus");
-
-        jLabel32.setText("JOYKO Tipe-x");
+        jLabel28.setText(pulpenJyko.getName());
+        jLabel29.setText(looseLeaf.getName());
+        jLabel30.setText(fCastellPencil.getName());
+        jLabel31.setText(stdrPenghapus.getName());
+        jLabel32.setText(joykoTipex.getName());
 
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel39.setText("Stok: 10");
-
+        jLabel39.setText("Stok: " + joykoTipex.getStock());
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel40.setText("Stok: 10");
-
+        jLabel40.setText("Stok: " + stdrPenghapus.getStock());
         jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel41.setText("Stok: 10");
-
+        jLabel41.setText("Stok: " + fCastellPencil.getStock());
         jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel42.setText("Stok: 10");
-
+        jLabel42.setText("Stok: " + looseLeaf.getStock());
         jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel43.setText("Stok: 10");
-
+        jLabel43.setText("Stok: " + pulpenJyko.getStock());
+        
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
