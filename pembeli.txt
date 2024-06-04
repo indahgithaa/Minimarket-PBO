@@ -1,3 +1,4 @@
 Olivia,OL0001,olivialauna,100000.0,true
 Launa,LA0001,olivia,100000.0,true
 lily,LI0001,honey,100000.0,true
+Indah,,indah,100000.0,true

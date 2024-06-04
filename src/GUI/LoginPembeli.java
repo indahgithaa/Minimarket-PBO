@@ -67,6 +67,11 @@ public class LoginPembeli extends javax.swing.JFrame {
         });
 
         jButton2.setText("Masuk sebagai Guest");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
         jLabel4.setText("Masuk sebagai Guest jika Anda bukan member");

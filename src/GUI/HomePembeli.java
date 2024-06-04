@@ -14,6 +14,7 @@ import Classes.Konsumen;
 import Classes.Makanan;
 import Classes.Minuman;
 import Classes.Abstract.Product;
+import Classes.ATK;
 
 /**
  *
@@ -31,18 +32,34 @@ public class HomePembeli extends javax.swing.JFrame {
     Minuman cimoryOriginal = new Minuman("Cimory Original", 8000, date, "CM001", 10);
     Minuman mizoneIsotonic = new Minuman("Mizone Isotonic", 5000, date, "MZ001", 10);
     Minuman tehKotakOri = new Minuman("Teh Kotak Ori", 5000, date, "TK001", 10);
+    // ...
+
 
     ATK pulpenJyko = new ATK("Pulpen JYKO", 4000, date, "PJ001", 10);
     ATK looseLeaf = new ATK("Loose Leaf - B5", 10000, date, "LL001", 10);
     ATK fCastellPencil = new ATK("F.Castell Pencil", 4000, date, "FC001", 10);
     ATK stdrPenghapus = new ATK("STDR Penghapus", 2000, date, "SP001", 10);
     ATK joykoTipex = new ATK("JOYKO Tipe-x", 5000, date, "JT001", 10);
+
+    
     /**
      * Creates new form HomePembeli
      */
+
     public HomePembeli(Konsumen konsumen) {
         this.konsumen = konsumen;
         initComponents(konsumen);
+        Minuman.listMinuman.add(aquaBotol);
+        Minuman.listMinuman.add(buavitaJmb);
+        Minuman.listMinuman.add(cimoryOriginal);
+        Minuman.listMinuman.add(mizoneIsotonic);
+        Minuman.listMinuman.add(tehKotakOri);
+        // ...
+        ATK.listATK.add(pulpenJyko);
+        ATK.listATK.add(looseLeaf);
+        ATK.listATK.add(fCastellPencil);
+        ATK.listATK.add(stdrPenghapus);
+        ATK.listATK.add(joykoTipex);
     }
 
     /**

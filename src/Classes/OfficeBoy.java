@@ -13,5 +13,4 @@ public class OfficeBoy extends Karyawan {
     public String toString() {
         return this.nama + "," + this.id + "," + this.posisi + "," + this.gaji + "," + this.password;
     }
-    
 }
