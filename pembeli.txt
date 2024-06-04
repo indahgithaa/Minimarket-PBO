@@ -1,3 +1,4 @@
 kaila,KA0001,kaila,100000.0,true
 kucing,KU0001,kucing,100000.0,true
 nadia,NA0001,nadia,100000.0,true
+yaya1,YA0001,yaya,100000.0,true

@@ -2,6 +2,6 @@ package Interfaces;
 
 public interface Transaksi {
     public void payWithCash();
-    public void payWithMemberCard();
+    public double payWithMemberCard(double totalBelanja);
     public void printBill();
 }

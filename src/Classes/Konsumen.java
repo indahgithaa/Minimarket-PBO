@@ -77,14 +77,13 @@ public class Konsumen extends Orang implements Transaksi {
 
     @Override
     public void payWithCash() {
-        System.out.println("Pembayaran dengan uang tunai berhasil!");
+        saldoMember -= 0;
     }
 
     @Override
-    public void payWithMemberCard() {
-        System.out.println("Pembayaran dengan kartu member berhasil!");
-        System.out.println("Saldo member anda sekarang: " + saldoMember);
-        System.out.println("Terima kasih telah berbelanja di toko kami!");
+    public double payWithMemberCard(double totalBelanja) {
+        saldoMember -= totalBelanja;
+        return saldoMember;
     }
 
     @Override

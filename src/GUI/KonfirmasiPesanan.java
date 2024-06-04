@@ -361,6 +361,7 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //show dialog message
         writeToFile();
+        konsumen.payWithCash();
         JOptionPane.showMessageDialog(this, "Pembayaran dengan tunai berhasil! \nTerima kasih telah berbelanja di Seven Eleven!");
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -369,7 +370,7 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
         writeToFile();
         if (konsumen != null) {
             if (totalKeseluruhan <= konsumen.getSaldoMember()) {
-                konsumen.setSaldoMember(konsumen.getSaldoMember() - totalKeseluruhan);
+                konsumen.setSaldoMember(konsumen.payWithMemberCard(totalKeseluruhan));
                 JOptionPane.showMessageDialog(this, "Pembayaran dengan saldo member berhasil!\n" + "Sisa saldo: " + (konsumen.getSaldoMember()) + "\nTerima kasih telah berbelanja di Seven Eleven!");
             } else {
                 JOptionPane.showMessageDialog(this, "Saldo member tidak mencukupi");
@@ -381,7 +382,6 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
 
     private double totalBelanja() {
         totalBelanja[0] = 0;
-
         if (konsumen != null) {
             // Hitung harga produk hashmap dikali qty
             konsumen.getBarangDibeli().forEach((k, v) -> {
