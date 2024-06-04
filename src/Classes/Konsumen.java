@@ -8,8 +8,9 @@ import java.util.Map;
 
 import Classes.Abstract.Orang;
 import Classes.Abstract.Product;
+import Interfaces.Transaksi;
 
-public class Konsumen extends Orang {
+public class Konsumen extends Orang implements Transaksi {
     private double saldoMember;
     private boolean isMember;
     private Map<Product, Integer> barangDibeli = new HashMap<>();
@@ -72,5 +73,26 @@ public class Konsumen extends Orang {
 
     public Map<Product, Integer> getBarangDibeli() {
         return barangDibeli;
+    }
+
+    @Override
+    public void payWithCash() {
+        System.out.println("Pembayaran dengan uang tunai berhasil!");
+    }
+
+    @Override
+    public void payWithMemberCard() {
+        System.out.println("Pembayaran dengan kartu member berhasil!");
+        System.out.println("Saldo member anda sekarang: " + saldoMember);
+        System.out.println("Terima kasih telah berbelanja di toko kami!");
+    }
+
+    @Override
+    public void printBill() {
+        for (Map.Entry<Product, Integer> entry : barangDibeli.entrySet()) {
+            Product product = entry.getKey();
+            int qty = entry.getValue();
+            System.out.println(product.getName() + " x" + qty + " = " + product.getPrice() * qty);
+        }
     }
 }

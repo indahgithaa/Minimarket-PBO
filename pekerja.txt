@@ -1,2 +1,4 @@
 Karina,KA0001,Kasir,2000000.0,karinaaespa
 Jennie,JE0002,Admin,2000000.0,jenniebp
+Lala,LA0003,Kasir,1000000.0,lala
+Tanboy,TA0004,Admin,500000.0,a
