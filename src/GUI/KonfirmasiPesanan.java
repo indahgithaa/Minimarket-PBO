@@ -370,7 +370,7 @@ public class KonfirmasiPesanan extends javax.swing.JFrame {
         if (konsumen != null) {
             if (totalKeseluruhan <= konsumen.getSaldoMember()) {
                 konsumen.setSaldoMember(konsumen.getSaldoMember() - totalKeseluruhan);
-                JOptionPane.showMessageDialog(this, "Pembayaran dengan saldo member berhasil! \nTerima kasih telah berbelanja di Seven Eleven!");
+                JOptionPane.showMessageDialog(this, "Pembayaran dengan saldo member berhasil!\n" + "Sisa saldo: " + (konsumen.getSaldoMember()) + "\nTerima kasih telah berbelanja di Seven Eleven!");
             } else {
                 JOptionPane.showMessageDialog(this, "Saldo member tidak mencukupi");
             }
