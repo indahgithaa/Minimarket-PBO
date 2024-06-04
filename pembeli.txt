@@ -1,6 +1,2 @@
-Olivia,OL0001,olivialauna,100000.0,true
-Launa,LA0001,olivia,100000.0,true
-lily,LI0001,honey,100000.0,true
-Indah,,indah,100000.0,true
-gea,,gea,100000.0,true
-karin,,karin,100000.0,true
+kaila,KA0001,kaila,100000.0,true
+kucing,KU0001,kucing,100000.0,true

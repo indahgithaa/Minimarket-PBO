@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
+
 import Classes.ATK;
 import Classes.Konsumen;
 import Classes.Makanan;
@@ -535,6 +537,11 @@ public class HomePembeli extends javax.swing.JFrame {
         jTabbedPane1.addTab("Produk Segar", jPanel6);
 
         jButton3.setText("Topup Saldo");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel33.setText("Mau belanja apa hari ini? :)");
 
@@ -622,6 +629,15 @@ public class HomePembeli extends javax.swing.JFrame {
         new KonfirmasiPesanan(konsumen, barangDibeliGuest).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (konsumen != null) {
+            new TopUp(konsumen).setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Guest tidak bisa top up saldo!");
+        }
+    }
     /**
      * @param args the command line arguments
      */

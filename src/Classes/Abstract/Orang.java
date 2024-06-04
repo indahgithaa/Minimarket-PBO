@@ -13,9 +13,7 @@ public abstract class Orang {
         this.id = id;
         this.password = password;
 
-        if (this.id == null || this.id.equals("")) {
-            generateId();
-        }
+        generateId();
     }
 
     public String getNama() {
@@ -31,15 +29,13 @@ public abstract class Orang {
     }
 
     public void generateId() {
-        String file1 = "karyawan.txt";
         String file2 = "pembeli.txt";
 
         String duaHurufPertama = nama.substring(0, 2).toUpperCase();
 
         try {
-            FileReader fileReader1 = new FileReader(file1);
             FileReader fileReader2 = new FileReader(file2);
-            if(fileReader1.read() == -1 && fileReader2.read() == -1) {
+            if(fileReader2.read() == -1) {
                 this.id = duaHurufPertama + "0001";
             } else {
                 idCounter++;
